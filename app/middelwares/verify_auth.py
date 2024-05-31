@@ -10,8 +10,9 @@ def verify_auth(token):
         token (str): The access token to be verified.
 
     Returns:
-        dict: A dictionary containing the result of the token verification. If the token is valid and belongs to an email
-        ending with "@valere.io", the dictionary will have the key "isValid" set to True. Otherwise, if the token is invalid,
+        dict: A dictionary containing the result of the token verification. If the token
+        is valid and belongs to an email ending with "@valere.io", the dictionary will
+        have the key "isValid" set to True. Otherwise, if the token is invalid,
         the dictionary will have the key "error" set to "Invalid token.".
 
     Raises:
