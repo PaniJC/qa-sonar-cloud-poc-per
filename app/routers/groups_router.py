@@ -6,6 +6,7 @@ from app.middelwares.verify_auth import verify_auth
 
 groups_router = APIRouter()
 
+
 @groups_router.get("/")
 def groups(json: Annotated[dict, Depends(verify_auth)]):
     """

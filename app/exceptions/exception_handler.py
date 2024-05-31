@@ -1,8 +1,8 @@
 from fastapi import HTTPException, Request, status
-from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 from app.exceptions.exceptions import CredentialsException
+
 
 def add_exception_handlers(app):
     @app.exception_handler(HTTPException)
@@ -22,6 +22,7 @@ def add_exception_handlers(app):
                 headers={"WWW-Authenticate": "Bearer"},
             )
         return await app.exception_handler(exc)(request, exc)
+
     @app.exception_handler(CredentialsException)
     async def credentials_exception_handler(
         request: Request, exc: CredentialsException

@@ -3,6 +3,7 @@ from googleapiclient.discovery import build
 
 from app.utils.credentials_utils import get_credentials
 
+
 def get_groups():
     """
     Get the groups from the Google Workspace Admin SDK.
@@ -10,13 +11,14 @@ def get_groups():
     Returns:
         dict: A dictionary with the groups.
     """
-    SCOPES = ['https://www.googleapis.com/auth/admin.directory.group']
+    SCOPES = ["https://www.googleapis.com/auth/admin.directory.group"]
     SERVICE_ACCOUNT_FILE = get_credentials()
 
     credentials = service_account.Credentials.from_service_account_info(
-        SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+        SERVICE_ACCOUNT_FILE, scopes=SCOPES
+    )
 
-    service = build('admin', 'directory_v1', credentials=credentials)
+    service = build("admin", "directory_v1", credentials=credentials)
 
     groups = service.groups().list().execute()
 

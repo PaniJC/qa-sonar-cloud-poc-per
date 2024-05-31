@@ -1,4 +1,6 @@
 import traceback
+
+
 class CredentialsException(Exception):
     """Exception raised for credential errors.
 

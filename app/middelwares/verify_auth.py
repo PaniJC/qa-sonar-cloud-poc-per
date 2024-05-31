@@ -1,6 +1,7 @@
 import requests
 from app.exceptions.exceptions import CredentialsException
 
+
 def verify_auth(token):
     """
     Verifies the authenticity of a token by making a request to the Google OAuth2 API.
@@ -18,7 +19,9 @@ def verify_auth(token):
 
     """
     try:
-        response = requests.get(f'https://oauth2.googleapis.com/tokeninfo?access_token={token}')
+        response = requests.get(
+            f"https://oauth2.googleapis.com/tokeninfo?access_token={token}"
+        )
 
         if response.status_code == 200:
             json = response.json()
