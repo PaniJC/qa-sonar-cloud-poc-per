@@ -1,7 +1,9 @@
 import requests
 
+from ddtrace import tracer
 from exceptions.Credentials_execptions import CredentialsException
 
+@tracer.wrap() 
 def verify_auth(token: str):
     """
     Verifies the authenticity of a token by making a request to the Google OAuth2 API.
