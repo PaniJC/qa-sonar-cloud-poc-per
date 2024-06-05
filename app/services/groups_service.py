@@ -1,7 +1,7 @@
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
-from app.utils.credentials_utils import get_credentials
+from utils.credentials_utils import get_credentials
 
 
 def get_groups():

@@ -1,11 +1,11 @@
 name: deploy code to ec2
 
 on:
-    workflow_run:
-        workflows: ["check code form build and test", "deploy infra in aws"]
-        branches: main
-        types:
-            - completed
+  workflow_run:
+      workflows: ["check code form build and test"]
+      branches: feature/*
+      types:
+          - completed
 
 jobs:
     deploy:
@@ -37,4 +37,9 @@ jobs:
                 docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
                 docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
     
+            - name: CodeDeploy runs
+              run: |
+                commit_hash=`git rev-parse HEAD`
+                aws deploy create-deployment --application-name ${{ secrets.DEPLOY_APPLICATION }} --deployment-group-name ${{ secrets.DEPLOY_GROUP }} --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash --ignore-application-stop-failures
+         
                 

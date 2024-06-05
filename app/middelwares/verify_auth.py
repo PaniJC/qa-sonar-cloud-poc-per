@@ -1,5 +1,5 @@
 import requests
-from app.exceptions.exceptions import CredentialsException
+from exceptions.exceptions import CredentialsException
 
 
 def verify_auth(token):

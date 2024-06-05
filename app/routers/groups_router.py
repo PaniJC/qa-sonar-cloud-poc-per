@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from typing import Annotated
-from app.services.groups_service import search_user_groups
-from app.middelwares.verify_auth import verify_auth
+from services.groups_service import search_user_groups
+from middelwares.verify_auth import verify_auth
 
 
 groups_router = APIRouter()
