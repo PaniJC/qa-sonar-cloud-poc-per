@@ -1,21 +1,22 @@
 services:
+  app:
+      image: 590183966112.dkr.ecr.us-east-1.amazonaws.com/onboarding-backend:Lasted
+      ports:
+        - "80:80"
+      environment:
+        DD_AGENT_HOST: datadog
+        DD_ENV: dev
+        OPENAIKEY: "*"
+      restart: always
+  
   datadog:
-    container_name: dd-agent
     image: "gcr.io/datadoghq/agent:latest"
     environment:
-       DD_API_KEY: 81d3b3d8c1b8012788ff38312afa9f3703441ac6
+       DD_API_KEY: a42469c50cd17fbe25ba65685bb912c4
        DD_SITE: us5.datadoghq.com  # Defaults to 'datadoghq.com'. Customers outside North America should use their correct Datadog Domain
        DD_APM_ENABLED: true    # Enable APM
     volumes: 
       - /var/run/docker.sock:/var/run/docker.sock:ro 
       - /proc/:/host/proc/:ro
       - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
-  app:
-      image: 590183966112.dkr.ecr.us-east-1.amazonaws.com/onboarding-backend:Lasted
-      ports:
-        - 80:80
-      environment:
-        DD_AGENT_HOST: datadog
-        DD_ENV: dev
-        OPENAIKEY: "*"
-      restart: always
+
