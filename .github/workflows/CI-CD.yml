@@ -1,11 +1,14 @@
 name: deploy code to ec2
 
 on:
-  workflow_run:
-      workflows: ["check code form build and test"]
-      branches: feature/*
-      types:
-          - completed
+  push:
+    branches:
+      - feature/*
+  #workflow_run:
+  #    workflows: ["check code form build and test"]
+  #    branches: feature/*
+  #    types:
+  #        - completed
 
 jobs:
     deploy:
