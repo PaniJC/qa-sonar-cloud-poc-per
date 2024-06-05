@@ -1,5 +1,5 @@
 import requests
-from exceptions.exceptions import CredentialsException
+from exceptions.Credentials_execptions import CredentialsException
 
 
 def verify_auth(token):
@@ -27,7 +27,6 @@ def verify_auth(token):
         if response.status_code == 200:
             json = response.json()
             if json["email"].endswith("@valere.io") and int(json["expires_in"]) > 0:
-                print(json)
                 return json
         raise CredentialsException("Invalid token.")
     except ValueError:

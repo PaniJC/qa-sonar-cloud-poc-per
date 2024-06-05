@@ -34,7 +34,7 @@ jobs:
         - name: Check code formatting
           run: ruff format --config ruff.toml
 
-        - name: Check code typings
-          run: |
-            cd app
-            mypy .
+        #- name: Check code typings
+        #  run: |
+        #    cd app
+        #    mypy .

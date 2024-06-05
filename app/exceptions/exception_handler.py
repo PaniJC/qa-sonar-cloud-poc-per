@@ -1,7 +1,7 @@
 from fastapi import HTTPException, Request, status
 from fastapi.responses import JSONResponse
 
-from exceptions.exceptions import CredentialsException
+from exceptions.Credentials_execptions import CredentialsException
 
 
 def add_exception_handlers(app):
