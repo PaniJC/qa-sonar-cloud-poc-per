@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir -p ../app
 echo "Clean old images and containers"
-if [ $(docker ps -aq) ] # If exists images on EC2 
+if [ -n "$(docker ps -aq)" ] # If exists images on EC2 
 then 
     sudo docker rm $(docker kill $(docker ps -aq))
     sudo docker rmi $(docker images -q)
