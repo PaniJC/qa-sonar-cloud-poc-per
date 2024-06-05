@@ -1,0 +1,9 @@
+services:
+  app:
+      image: 590183966112.dkr.ecr.us-east-1.amazonaws.com/poc-ec2-deploy:Lasted
+      ports:
+        - 80:80
+      environment:
+        OPENAIKEY: "*"
+      restart: always
+  
