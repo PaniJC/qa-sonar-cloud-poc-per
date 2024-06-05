@@ -1,15 +1,10 @@
 from fastapi import FastAPI
-from ddtrace import patch, tracer
+from ddtrace.runtime import RuntimeMetrics
 from routers.routers import routers
 from exceptions.exception_handler import add_exception_handlers
 
 
-patch(fastapi=True)
-
-tracer.configure(
-    hostname="datadog-agent",
-    port=8126,
-)
+RuntimeMetrics.enable()
 
 app = FastAPI()
 
