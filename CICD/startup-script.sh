@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir -p ../app
 echo "Clean old images and containers"
-if [ -n "$(docker ps -aq)" ] # If exists images on EC2 
+if [ -n "$(docker images -q)" ] # If exists images on EC2 
 then
     echo "Stop container.."
     sudo docker stop $(docker ps -aq)
