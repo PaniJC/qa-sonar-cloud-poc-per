@@ -1,6 +1,5 @@
 services:
   datadog:
-    container_name: dd-agent
     image: "gcr.io/datadoghq/agent:latest"
     environment:
        DD_API_KEY: a42469c50cd17fbe25ba65685bb912c4
