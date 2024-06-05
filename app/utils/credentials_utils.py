@@ -3,7 +3,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def get_credentials() -> dict: 
+
+def get_credentials() -> dict:
     return {
         "type": os.environ["G_TYPE"],
         "project_id": os.environ["G_PROJECT_ID"],

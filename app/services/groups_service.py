@@ -35,10 +35,10 @@ def search_user_groups(user_email):
     Returns:
         dict: A dictionary with the groups.
     """
-    #groups = get_groups()
+    # groups = get_groups()
 
     # ListOfGroups = filter(groups, lambda group: user_email in group['email'])
     # review this line
 
-    #print(groups)
+    # print(groups)
     return {"groups": "groups"}
