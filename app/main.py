@@ -1,10 +1,10 @@
 from fastapi import FastAPI
 from ddtrace.runtime import RuntimeMetrics
-from ddtrace import patch_all
+from ddtrace import patch
 from routers.routers import routers
 from exceptions.exception_handler import add_exception_handlers
 
-patch_all()
+patch(logging=True)
 RuntimeMetrics.enable()
 
 app = FastAPI()
