@@ -8,6 +8,8 @@ services:
       DD_LOGS_ENABLED: true   # Enable Logs
       DD_RUNTIME_METRICS_ENABLED: true # Enable Runtime Metrics
       DD_APM_INSTRUMENTATION_ENABLED: all
+      DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL: true
+      DD_CONTAINER_EXCLUDE: "name:datadog-agent"
     volumes: 
       - /var/run/docker.sock:/var/run/docker.sock:ro 
       - /proc/:/host/proc/:ro
