@@ -2,9 +2,12 @@ services:
   datadog:
     image: "gcr.io/datadoghq/agent:latest"
     environment:
-       DD_API_KEY: a42469c50cd17fbe25ba65685bb912c4
-       DD_SITE: us5.datadoghq.com  # Defaults to 'datadoghq.com'. Customers outside North America should use their correct Datadog Domain
-       DD_APM_ENABLED: true    # Enable APM
+      DD_API_KEY: a42469c50cd17fbe25ba65685bb912c4
+      DD_SITE: us5.datadoghq.com  # Defaults to 'datadoghq.com'. Customers outside North America should use their correct Datadog Domain
+      DD_APM_ENABLED: true    # Enable APM
+      DD_LOGS_ENABLED: true   # Enable Logs
+      DD_RUNTIME_METRICS_ENABLED: true # Enable Runtime Metrics
+      DD_APM_INSTRUMENTATION_ENABLED: all
     volumes: 
       - /var/run/docker.sock:/var/run/docker.sock:ro 
       - /proc/:/host/proc/:ro
@@ -20,6 +23,7 @@ services:
       DD_LOGS_INJECTION: true
       DD_SERVICE: onboarding-backend
       DD_RUNTIME_METRICS_ENABLED: true
+      DATADOG_TRACE_AGENT_HOSTNAME: datadog
       OPENAIKEY: "*"
     restart: always
 
