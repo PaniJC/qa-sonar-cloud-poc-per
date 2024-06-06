@@ -2,6 +2,7 @@ import requests
 
 from ddtrace import tracer
 from exceptions.Credentials_execptions import CredentialsException
+from utils.logger_util import log_info, log_error, log_warning
 
 @tracer.wrap() 
 def verify_auth(token: str):
@@ -22,14 +23,18 @@ def verify_auth(token: str):
 
     """
     try:
+        log_info("Verifying token.")
         response = requests.get(
             f"https://oauth2.googleapis.com/tokeninfo?access_token={token}"
         )
 
+        log_info(f"Token verification response: {response.json()}")
         if response.status_code == 200:
             json = response.json()
             if json["email"].endswith("@valere.io") and int(json["expires_in"]) > 0:
                 return json
+        log_warning("Invalid token.")
         raise CredentialsException("Invalid token.")
     except ValueError:
+        log_error("Error in to request the token.")
         raise CredentialsException("Invalid token.")
