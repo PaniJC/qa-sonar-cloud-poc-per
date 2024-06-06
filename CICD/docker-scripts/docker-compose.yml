@@ -19,6 +19,7 @@ services:
       DD_ENV: dev
       DD_LOGS_INJECTION: true
       DD_SERVICE: onboarding-backend
+      DD_RUNTIME_METRICS_ENABLED: true
       OPENAIKEY: "*"
     restart: always
 
