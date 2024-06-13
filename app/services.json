@@ -1,0 +1,40 @@
+{
+  "services": [
+    {
+      "name": "Jira",
+      "icon": "<SiJira className='mr-2 text-white' />",
+      "link": "https://logic-valere.atlassian.net/jira/projects?selectedProjectType=software",
+      "description": "This is the Jira page for the company Valere and you will found all the projects also the tasks and the status of each one.",
+      "otherPage": true
+    },
+    {
+      "name": "Confluence",
+      "icon": "<SiConfluence className='mr-2 text-white' />",
+      "link": "https://valere-team-yffzlzk7.atlassian.net/wiki/home",
+      "description": "This is the Confluence page for the company Valere and you will found all the documentation of onbording.",
+      "otherPage": true
+    },
+    {
+      "name": "Github",
+      "icon": "<FaGithub className='mr-2 text-white' />",
+      "link": "https://github.com/valere-logic",
+      "description": "This is the Github page for the company Valere and you will found all the repositories and the status of each one.",
+      "otherPage": true
+    },
+    {
+      "name": "AWS",
+      "icon": "<FaAws className='mr-2 text-white' />",
+      "link": "https://d-9067f755f8.awsapps.com/start/",
+      "description": "This is the AWS page for the company Valere and you will found our services and the environment of each one.",
+      "otherPage": true
+    },
+    {
+      "name": "Slack",
+      "icon": "<BsSlack className='mr-2 text-white' />",
+      "link": "https://app.slack.com/client/TKSEJTSGH",
+      "description": "This page is the Slack page for the company Valere and you will found all the channels.",
+      "otherPage": true
+    }
+  ]
+}
+  
