@@ -1,0 +1,35 @@
+name: deploy infra in aws
+
+on:
+  workflow_dispatch
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+            
+            - name: Configure AWS credentials
+              uses: aws-actions/configure-aws-credentials@v1
+              with:
+                aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                aws-region: us-east-1
+
+            - name: install terraform
+              run: |
+                sudo apt-get update
+                sudo apt-get install -y unzip
+                wget https://releases.hashicorp.com/terraform/1.8.1/terraform_1.8.1_linux_amd64.zip
+                unzip terraform_1.8.1_linux_amd64.zip
+                sudo mv terraform /usr/local/bin/
+                echo terraform --version
+                cd infra
+                terraform init -backend-config=backend.conf
+      
+            - name: public infrastructure
+              run: |
+                  echo init terrafom and apply
+                  cd infra
+                  terraform apply -auto-approve -var "repository_name=${{ github.repository }}" -var "ssh_key_name=${{ secrets.SSH_KEY_NAME}}" -var "aws_region=${{ secrets.AWS_REGION }}" -var "aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var "security_group_name=${{ secrets.SECURITY_GROUP_NAME }}"
